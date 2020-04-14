@@ -10,8 +10,7 @@ public class splashScreen : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
     }
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +20,7 @@ public class splashScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LoadFirstLevel();
+        
     }
-
-    private static void LoadFirstLevel()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            SceneManager.LoadScene(1);
-        }
-    }
+    
 }
