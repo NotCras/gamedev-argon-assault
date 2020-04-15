@@ -276,6 +276,7 @@
           <e p="Enemy.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="SceneLoader.cs" t="Include" />
+          <e p="ScoreBoard.cs" t="Include" />
           <e p="SelfDestructor.cs" t="Include" />
           <e p="musicHandler.cs" t="Include" />
           <e p="splashScreen.cs" t="Include" />
