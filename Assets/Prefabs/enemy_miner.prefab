@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4434257922130580531}
   - component: {fileID: 4464164669667779855}
   - component: {fileID: 4455448369065790333}
+  - component: {fileID: -1853848984646950404}
   m_Layer: 0
-  m_Name: Ship_04
+  m_Name: enemy_miner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-1853848984646950404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432533849762280117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d131f8393b48c8ea9b8b7335f8323a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathFX: {fileID: 190846187898426929, guid: 46516868257da7d61a20b04b3a1acfe8, type: 3}

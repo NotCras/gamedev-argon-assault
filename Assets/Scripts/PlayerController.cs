@@ -4,40 +4,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-
+    [Header("General")]
     [Tooltip("in m/s")][SerializeField] private float xSpeed = 10f;
     [Tooltip("in m")][SerializeField] private float xBound = 4.5f;
     
     [Tooltip("in m/s")][SerializeField] private float ySpeed = 8f;
     [Tooltip("in m")][SerializeField] private float yBound = 2.5f;
 
+    [Header("Position-based parameters")]
     [SerializeField] private float pitchFactor = -5f;
-    [SerializeField] private float controlPitchFactor = -24f;
-    
     [SerializeField] private float yawFactor = 5f;
-
+    
+    [Header("Control-based parameters")]
+    [SerializeField] private float controlPitchFactor = -24f;
     [SerializeField] private float controlRollFactor = -20f;
 
     
     private float xThrow;
     private float yThrow;
+    private bool isControlEnabled = true;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        ProcessHorizontalMovement();
-        ProcessVerticalMovement();
-        ProcessRotation();
+        if(isControlEnabled)
+        {
+            ProcessHorizontalMovement();
+            ProcessVerticalMovement();
+            ProcessRotation();
+        }
+       
 
     }
+
+    private void OnPlayerDeath() // called by collisionHandler
+    {
+        isControlEnabled = false;
+    }
+    
 
     private void ProcessHorizontalMovement()
     {
