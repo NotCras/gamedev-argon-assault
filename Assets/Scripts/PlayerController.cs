@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("in m/s")][SerializeField] private float ySpeed = 8f;
     [Tooltip("in m")][SerializeField] private float yBound = 2.5f;
 
+    [SerializeField] private GameObject[] blasters;
+    
     [Header("Position-based parameters")]
     [SerializeField] private float pitchFactor = -5f;
     [SerializeField] private float yawFactor = 5f;
@@ -34,9 +36,9 @@ public class PlayerController : MonoBehaviour
             ProcessHorizontalMovement();
             ProcessVerticalMovement();
             ProcessRotation();
+            ProcessFiring();
         }
-       
-
+        
     }
 
     private void OnPlayerDeath() // called by collisionHandler
@@ -76,5 +78,34 @@ public class PlayerController : MonoBehaviour
         float roll = xThrow * controlRollFactor;
         
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    void ProcessFiring()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire1"))
+        {
+            ActivateBlasters();
+            print("Firing blaster");
+        }
+        else
+        {
+            DisableBlasters();
+        }
+    }
+
+    private void ActivateBlasters()
+    {
+        foreach (GameObject blaster in blasters)
+        {
+            blaster.SetActive(true);
+        }
+    }
+    
+    private void DisableBlasters()
+    {
+        foreach (GameObject blaster in blasters)
+        {
+            blaster.SetActive(false);
+        }
     }
 }

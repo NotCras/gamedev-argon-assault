@@ -8,9 +8,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject deathFX;
     [SerializeField] private Transform parent;
-    [SerializeField] private int scorePerHit = 12; //maybe put it on the enemy?
-
-
+    [SerializeField] private int scorePerHit = 12;
+    [SerializeField] private int healthPoints = 10;
     private ScoreBoard scoreBoard;
     
     // Start is called before the first frame update
@@ -21,6 +20,15 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnParticleCollision(GameObject other)
+    {
+        healthPoints--;
+        if (healthPoints <= 0)
+        {
+            KillEnemy();
+        }
+    }
+
+    private void KillEnemy()
     {
         GameObject explosion = Instantiate(deathFX, transform.position, Quaternion.identity);
         explosion.transform.parent = parent;
