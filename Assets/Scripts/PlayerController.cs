@@ -84,28 +84,22 @@ public class PlayerController : MonoBehaviour
     {
         if (CrossPlatformInputManager.GetButton("Fire1"))
         {
-            ActivateBlasters();
+            ToggleBlasters(true);
             print("Firing blaster");
         }
         else
         {
-            DisableBlasters();
+            ToggleBlasters(false);
         }
     }
 
-    private void ActivateBlasters()
+    private void ToggleBlasters(bool isActive)
     {
-        foreach (GameObject blaster in blasters)
+        foreach (GameObject blaster in blasters) // todo: may affect deathFX module as well
         {
-            blaster.SetActive(true);
+            var emissionModule = blaster.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = isActive;
         }
     }
     
-    private void DisableBlasters()
-    {
-        foreach (GameObject blaster in blasters)
-        {
-            blaster.SetActive(false);
-        }
-    }
 }
